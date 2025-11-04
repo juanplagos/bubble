@@ -18,7 +18,7 @@ func main() {
         AllowCredentials: true,
 	})
 
-	handler := c.handler(mux)
+	handler := c.Handler(mux)
 
 	err := http.ListenAndServe(":8080", handler)
 	if err != nil {
