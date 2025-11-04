@@ -8,8 +8,8 @@ import(
 
 func RegisterRoutes() *http.ServeMux {
 	mux := http.NewServeMux()
-	//mux.HandleFunc("GET /entries/", GetEntries())
-	//mux.HandleFunc("POST /entries/", CreateEntry())
-	mux.HandleFunc("/authors", handler.GetAuthors)
+	// mux.HandleFunc("GET /entries/", handler.GetEntries)
+	// mux.HandleFunc("POST /entries/", handler.CreateEntry)
+	mux.HandleFunc("GET /authors/", handler.GetAuthors)
 	return mux
 }
