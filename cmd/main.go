@@ -4,13 +4,23 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/rs/cors"
 	"github.com/juanplagos/bubble/router"
 )
 
 func main() {
-	log.Println("server starting on ':8080'...")
 	mux := router.RegisterRoutes()
-	err := http.ListenAndServe(":8080", mux)
+
+	c := cors.New(cors.Options{
+		AllowedOrigins:   []string{"http://localhost:3000"},
+        AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+        AllowedHeaders:   []string{"*"},
+        AllowCredentials: true,
+	})
+
+	handler := c.handler(mux)
+
+	err := http.ListenAndServe(":8080", handler)
 	if err != nil {
 	    log.Fatal(err)
 	}
