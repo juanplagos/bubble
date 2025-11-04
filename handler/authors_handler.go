@@ -10,7 +10,7 @@ import (
 func GetAuthors(w http.ResponseWriter, r *http.Request) {
 	response := map[string]any{
 		"message": "not far from fetched",
-		"authors": mock.Authors,
+		"authors": mock.Author,
 	}
 	json.NewEncoder(w).Encode(response)
 }
