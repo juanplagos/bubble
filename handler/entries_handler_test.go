@@ -1,7 +1,13 @@
 package handler
 
-import "testing"
+import (
+	"testing"
 
-func testEntriesHandler(t *testing.T) error {
-	return nil
+	//"github.com/juanplagos/bubble/repository"
+)
+
+func TestEntriesHandler(t *testing.T) {
+	t.Run("GetAllEntries handler", func(t *testing.T) {
+	
+	})
 }
