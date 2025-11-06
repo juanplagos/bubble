@@ -4,12 +4,15 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/rs/cors"
+	"github.com/juanplagos/bubble/repository"
 	"github.com/juanplagos/bubble/router"
+	"github.com/rs/cors"
 )
 
 func main() {
-	mux := router.RegisterRoutes()
+	pool := repository.InitPostgresPool()
+	defer pool.Close()
+	mux := router.RegisterRoutes(pool)
 
 	c := cors.New(cors.Options{
 		AllowedOrigins:   []string{"http://localhost:3000"},
