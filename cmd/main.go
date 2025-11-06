@@ -3,6 +3,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"os"
 
 	"github.com/juanplagos/bubble/repository"
 	"github.com/juanplagos/bubble/router"
@@ -15,7 +16,7 @@ func main() {
 	mux := router.RegisterRoutes(pool)
 
 	c := cors.New(cors.Options{
-		AllowedOrigins:   []string{"http://localhost:3000"},
+		AllowedOrigins:   []string{os.Getenv("ALLOWED_ORIGIN")},
         AllowedMethods:   []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
         AllowedHeaders:   []string{"*"},
         AllowCredentials: true,
