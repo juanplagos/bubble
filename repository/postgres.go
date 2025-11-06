@@ -15,6 +15,8 @@ func InitPostgresPool() *pgxpool.Pool {
     port := os.Getenv("POSTGRES_PORT")
     dbname := os.Getenv("POSTGRES_DB")
     
+	fmt.Println("se conectando a:", user, host, port, dbname)
+
     connStr := fmt.Sprintf("postgres://%s:%s@%s:%s/%s", 
         user, password, host, port, dbname)
     
